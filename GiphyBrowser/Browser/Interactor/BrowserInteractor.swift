@@ -36,8 +36,12 @@ class BrowserInteractor {
         self.imagesFetcher = imagesFetcher
     }
     
-    func start() {
+    func fetch() {
         fetchImages(initialFetch: true)
+    }
+    
+    func fetchMore() {
+        fetchImages(initialFetch: false)
     }
     
     func numberOfImages() -> Int {
@@ -53,17 +57,13 @@ class BrowserInteractor {
         router?.routeToDetails(of: image)
     }
     
-    func fetchMore() {
-        fetchImages(initialFetch: false)
-    }
-    
     private func fetchImages(initialFetch: Bool) {
         guard !isFetching else { return }
         
         isFetchingMore = !initialFetch
         isFetching = true
         
-        imagesFetcher.fetch(limit: imagesPerPage, offset: images.count + 1) { [weak self] result in
+        imagesFetcher.fetch(limit: imagesPerPage, offset: images.count) { [weak self] result in
             DispatchQueue.main.async {
                 guard let me = self else { return }
 
@@ -72,6 +72,7 @@ class BrowserInteractor {
                 
                 switch result {
                 case .failure(let error):
+                    // TODO show alert
                     print(error)
                 case .success(let response):
                     me.process(images: response.data)
@@ -94,12 +95,12 @@ class BrowserInteractor {
         
         /// Sometimes Giphy doesn't return some preview urls.
         /// So let's filter those images.
-        imageViewModels = images.filter{ $0.images.previewGif.url != nil }.map { ImageViewModel(gifImage: $0)}
+        imageViewModels = images.filter { $0.images.previewGif.url != nil }.map { ImageViewModel(gifImage: $0) }
         
         for imageVM in imageViewModels {
             fetchImage(for: imageVM)
         }
-                
+        
         self.images.append(contentsOf: imageViewModels)
         
         for i in startingIndex..<self.images.count {

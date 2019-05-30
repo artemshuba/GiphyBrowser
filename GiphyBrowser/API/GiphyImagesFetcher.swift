@@ -8,7 +8,7 @@
 import Foundation
 
 private let apiBase = "https://api.giphy.com/v1/gifs"
-private let apiKey = "fK9biMnsaY9XF3E85pON4wm21oFEIXIJ"
+private let apiKey = "uC3CE53LNmWT6Z4x9sBZPIpdhoPgEyGw"
 
 class GiphyImagesFetcher : ImagesFetcher {
     private let httpService: HttpService
@@ -69,6 +69,8 @@ class GiphyImagesFetcher : ImagesFetcher {
             }
             
             print("Response: \(String(data: data, encoding: .utf8) ?? "")")
+            
+            // TODO decoding should be done in a separate class
             
             do {
                 let decoder = JSONDecoder()

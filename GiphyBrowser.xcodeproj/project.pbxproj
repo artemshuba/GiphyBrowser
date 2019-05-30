@@ -14,6 +14,10 @@
 		E8A22C44229FDE1A00F376C7 /* PhotosCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */; };
 		E8A22C46229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */; };
 		E8A22C4922A004CB00F376C7 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4822A004CB00F376C7 /* ImageViewModel.swift */; };
+		E8A22C4B22A00C8300F376C7 /* BrowserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4A22A00C8300F376C7 /* BrowserInteractorTests.swift */; };
+		E8A22C4E22A00CFC00F376C7 /* MockImagesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4D22A00CFC00F376C7 /* MockImagesFetcher.swift */; };
+		E8A22C5022A0129300F376C7 /* MockBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4F22A0129300F376C7 /* MockBrowserView.swift */; };
+		E8A22C5222A01A8300F376C7 /* ImageViewModeltests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C5122A01A8300F376C7 /* ImageViewModeltests.swift */; };
 		E8B56A68229FD2F400E1908D /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */; };
 		E8B56A6B229FD35F00E1908D /* ImageDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */; };
 		E8B56A6E229FD3A900E1908D /* BrowserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */; };
@@ -21,7 +25,6 @@
 		E8F52EDF229FB3090082423C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F52EDE229FB3090082423C /* AppDelegate.swift */; };
 		E8F52EE6229FB30A0082423C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F52EE5229FB30A0082423C /* Assets.xcassets */; };
 		E8F52EE9229FB30A0082423C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8F52EE7229FB30A0082423C /* LaunchScreen.storyboard */; };
-		E8F52EF4229FB30A0082423C /* GiphyBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F52EF3229FB30A0082423C /* GiphyBrowserTests.swift */; };
 		E8F52EFF229FB35F0082423C /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F52EFE229FB35F0082423C /* BrowserViewController.swift */; };
 		E8F52F04229FB4340082423C /* GiphyImagesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F52F03229FB4340082423C /* GiphyImagesFetcher.swift */; };
 		E8F52F06229FB45D0082423C /* ImagesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F52F05229FB45D0082423C /* ImagesFetcher.swift */; };
@@ -73,6 +76,10 @@
 		E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionFooterView.swift; sourceTree = "<group>"; };
 		E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		E8A22C4822A004CB00F376C7 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		E8A22C4A22A00C8300F376C7 /* BrowserInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserInteractorTests.swift; sourceTree = "<group>"; };
+		E8A22C4D22A00CFC00F376C7 /* MockImagesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImagesFetcher.swift; sourceTree = "<group>"; };
+		E8A22C4F22A0129300F376C7 /* MockBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBrowserView.swift; sourceTree = "<group>"; };
+		E8A22C5122A01A8300F376C7 /* ImageViewModeltests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModeltests.swift; sourceTree = "<group>"; };
 		E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsBuilder.swift; sourceTree = "<group>"; };
 		E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserRouter.swift; sourceTree = "<group>"; };
@@ -83,7 +90,6 @@
 		E8F52EE8229FB30A0082423C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8F52EEA229FB30A0082423C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F52EEF229FB30A0082423C /* GiphyBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiphyBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8F52EF3229FB30A0082423C /* GiphyBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyBrowserTests.swift; sourceTree = "<group>"; };
 		E8F52EF5229FB30A0082423C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F52EFE229FB35F0082423C /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		E8F52F03229FB4340082423C /* GiphyImagesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyImagesFetcher.swift; sourceTree = "<group>"; };
@@ -137,6 +143,15 @@
 				E8A22C4822A004CB00F376C7 /* ImageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E8A22C4C22A00CEF00F376C7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E8A22C4D22A00CFC00F376C7 /* MockImagesFetcher.swift */,
+				E8A22C4F22A0129300F376C7 /* MockBrowserView.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		E8B56A61229FCAE800E1908D /* Extensions */ = {
@@ -225,7 +240,9 @@
 		E8F52EF2229FB30A0082423C /* GiphyBrowserTests */ = {
 			isa = PBXGroup;
 			children = (
-				E8F52EF3229FB30A0082423C /* GiphyBrowserTests.swift */,
+				E8A22C4C22A00CEF00F376C7 /* Mocks */,
+				E8A22C4A22A00C8300F376C7 /* BrowserInteractorTests.swift */,
+				E8A22C5122A01A8300F376C7 /* ImageViewModeltests.swift */,
 				E8F52EF5229FB30A0082423C /* Info.plist */,
 			);
 			path = GiphyBrowserTests;
@@ -456,7 +473,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8F52EF4229FB30A0082423C /* GiphyBrowserTests.swift in Sources */,
+				E8A22C5022A0129300F376C7 /* MockBrowserView.swift in Sources */,
+				E8A22C4E22A00CFC00F376C7 /* MockImagesFetcher.swift in Sources */,
+				E8A22C5222A01A8300F376C7 /* ImageViewModeltests.swift in Sources */,
+				E8A22C4B22A00C8300F376C7 /* BrowserInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

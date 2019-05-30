@@ -39,7 +39,7 @@ class BrowserViewController : UIViewController {
         setupLayout()
         setupViews()
         
-        interactor.start()
+        interactor.fetch()
     }
     
     override func viewDidLayoutSubviews() {
@@ -106,6 +106,7 @@ extension BrowserViewController : UICollectionViewDataSource {
         }
         
         cell.imageViewModel = interactor.image(at: indexPath)
+
         
         return cell
     }
