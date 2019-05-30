@@ -13,6 +13,7 @@
 		E8A22C3E229FD95800F376C7 /* SwiftyGif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8A22C44229FDE1A00F376C7 /* PhotosCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */; };
 		E8A22C46229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */; };
+		E8A22C4922A004CB00F376C7 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4822A004CB00F376C7 /* ImageViewModel.swift */; };
 		E8B56A68229FD2F400E1908D /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */; };
 		E8B56A6B229FD35F00E1908D /* ImageDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */; };
 		E8B56A6E229FD3A900E1908D /* BrowserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */; };
@@ -71,6 +72,7 @@
 		E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
 		E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionFooterView.swift; sourceTree = "<group>"; };
 		E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+reuseIdentifier.swift"; sourceTree = "<group>"; };
+		E8A22C4822A004CB00F376C7 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsBuilder.swift; sourceTree = "<group>"; };
 		E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserRouter.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 				E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */,
 			);
 			path = Footer;
+			sourceTree = "<group>";
+		};
+		E8A22C4722A004B700F376C7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E8A22C4822A004CB00F376C7 /* ImageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E8B56A61229FCAE800E1908D /* Extensions */ = {
@@ -227,6 +237,7 @@
 				E8F52F1B229FC2420082423C /* Builder */,
 				E8B56A6C229FD39A00E1908D /* Router */,
 				E8F52F18229FC21B0082423C /* Interactor */,
+				E8A22C4722A004B700F376C7 /* ViewModel */,
 				E8F52F16229FC1870082423C /* View */,
 			);
 			path = Browser;
@@ -434,6 +445,7 @@
 				E8A22C37229FD5D300F376C7 /* ImageDetailsInteractor.swift in Sources */,
 				E8F52F15229FBA070082423C /* HttpService.swift in Sources */,
 				E8F52F13229FB9FE0082423C /* HttpRequest.swift in Sources */,
+				E8A22C4922A004CB00F376C7 /* ImageViewModel.swift in Sources */,
 				E8F52EFF229FB35F0082423C /* BrowserViewController.swift in Sources */,
 				E8F52F09229FB4C20082423C /* GifImage.swift in Sources */,
 				E8A22C46229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift in Sources */,

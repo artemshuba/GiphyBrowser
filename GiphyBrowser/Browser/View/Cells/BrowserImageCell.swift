@@ -10,9 +10,10 @@ import UIKit
 class BrowserImageCell : UICollectionViewCell {
     private lazy var imageView = UIImageView()
     
-    var image: UIImage? {
+    var imageViewModel: ImageViewModel? {
         didSet {
-            imageView.image = image
+            update(imageData: imageViewModel?.imageData)
+            imageViewModel?.onUpdate = update
         }
     }
     
@@ -42,5 +43,16 @@ class BrowserImageCell : UICollectionViewCell {
     private func setupViews() {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+    }
+    
+    private func update(imageData: Data?) {
+        guard let data = imageData else {
+            self.imageView.image = nil
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.imageView.image = UIImage(data: data)
+        }
     }
 }

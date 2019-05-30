@@ -12,9 +12,11 @@ private let apiKey = "fK9biMnsaY9XF3E85pON4wm21oFEIXIJ"
 
 class GiphyImagesFetcher : ImagesFetcher {
     private let httpService: HttpService
+    private let cache: NSCache<NSString, NSData>
     
     init(httpService: HttpService) {
         self.httpService = httpService
+        self.cache = NSCache<NSString, NSData>()
     }
     
     func fetch(limit: Int, offset: Int, complete: @escaping (Result<ImagesResponse, Error>) -> Void) {
@@ -28,6 +30,30 @@ class GiphyImagesFetcher : ImagesFetcher {
             url: "\(apiBase)/trending",
             parameters: parameters).responseData { [weak self] result in
                 self?.handle(result: result, complete: complete)
+        }
+    }
+    
+    func fetch(image: GifImage, complete: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = image.images.previewGif.url else { return }
+        
+        if let cachedData = cache.object(forKey: NSString(string: url)) {
+            complete(.success(Data(referencing: cachedData)))
+            return
+        }
+        
+        httpService.request(url: url, parameters: [:]).responseData { [weak self] result in
+            switch result {
+            case .failure(let error):
+                complete(.failure(error))
+            case .success(let data):
+                guard let imageData = data else {
+                    complete(.failure(ImagesFetcherError.noData))
+                    return
+                }
+                
+                self?.cache.setObject(NSData(data: imageData), forKey: NSString(string: url))
+                complete(.success(imageData))
+            }
         }
     }
     

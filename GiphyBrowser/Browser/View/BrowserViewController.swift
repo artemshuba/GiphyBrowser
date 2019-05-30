@@ -10,7 +10,7 @@ import UIKit
 private let maxItemsInRow = 4
 
 protocol BrowserView : class {
-    func reload()
+    func insertItems(at indexPaths: [IndexPath])
     func showActivity(isLoading: Bool)
     func showActivity(isLoadingMore: Bool)
 }
@@ -105,13 +105,8 @@ extension BrowserViewController : UICollectionViewDataSource {
                                                                 fatalError("Unexpected cell type.")
         }
         
-        let image = interactor.image(at: indexPath)
-        if let previewUrl = image.images.previewGif.url,
-            let url = URL(string: previewUrl),
-            let data = try? Data(contentsOf: url) {
-            //TODO asynchronius loading
-            cell.image = UIImage(data: data)
-        }
+        cell.imageViewModel = interactor.image(at: indexPath)
+        
         return cell
     }
 }
@@ -149,8 +144,8 @@ extension BrowserViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension BrowserViewController : BrowserView {
-    func reload() {
-        imagesCollectionView.reloadData()
+    func insertItems(at indexPaths: [IndexPath]) {
+        imagesCollectionView.insertItems(at: indexPaths)
     }
     
     func showActivity(isLoading: Bool) {

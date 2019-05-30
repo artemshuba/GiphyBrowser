@@ -8,9 +8,9 @@
 import Foundation
 
 class ImageDetailsInteractor {
-    let image: GifImage
+    let image: ImageViewModel
     
-    init(image: GifImage) {
+    init(image: ImageViewModel) {
         self.image = image
     }
 }

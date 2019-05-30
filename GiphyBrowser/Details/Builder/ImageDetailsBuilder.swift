@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageDetailsBuilder {
-    static func build(with image: GifImage) -> ImageDetailsViewController {
+    static func build(with image: ImageViewModel) -> ImageDetailsViewController {
         let interactor = ImageDetailsInteractor(image: image)
         let viewController = ImageDetailsViewController(interactor: interactor)
         

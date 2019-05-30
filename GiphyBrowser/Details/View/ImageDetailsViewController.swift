@@ -46,7 +46,7 @@ class ImageDetailsViewController : UIViewController {
         imageView.contentMode = .scaleAspectFit
         
         if
-            let previewUrl = interactor.image.images.original.url,
+            let previewUrl = interactor.image.gifImage.images.original.url,
             let url = URL(string: previewUrl) {
             imageView.setGifFromURL(url)
         }

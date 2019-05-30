@@ -14,4 +14,5 @@ enum ImagesFetcherError : Error {
 
 protocol ImagesFetcher {
     func fetch(limit: Int, offset: Int, complete: @escaping (Result<ImagesResponse, Error>) -> Void)
+    func fetch(image: GifImage, complete: @escaping (Result<Data, Error>) -> Void)
 }

@@ -10,7 +10,7 @@ import UIKit
 class BrowserRouter {
     weak var source: UIViewController?
     
-    func routeToDetails(of image: GifImage) {
+    func routeToDetails(of image: ImageViewModel) {
         let targetViewController = ImageDetailsBuilder.build(with: image)
         source?.navigationController?.pushViewController(targetViewController, animated: true)
     }

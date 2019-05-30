@@ -11,7 +11,7 @@ private let imagesPerPage = 25
 
 class BrowserInteractor {
     private let imagesFetcher: ImagesFetcher
-    private var images: [GifImage] = []
+    private var images: [ImageViewModel] = []
     
     weak var view: BrowserView?
     var router: BrowserRouter?
@@ -44,7 +44,7 @@ class BrowserInteractor {
         return images.count
     }
     
-    func image(at indexPath: IndexPath) -> GifImage {
+    func image(at indexPath: IndexPath) -> ImageViewModel {
         return images[indexPath.row]
     }
     
@@ -63,7 +63,7 @@ class BrowserInteractor {
         isFetchingMore = !initialFetch
         isFetching = true
         
-        imagesFetcher.fetch(limit: imagesPerPage, offset: images.count) { [weak self] result in
+        imagesFetcher.fetch(limit: imagesPerPage, offset: images.count + 1) { [weak self] result in
             DispatchQueue.main.async {
                 guard let me = self else { return }
 
@@ -75,15 +75,37 @@ class BrowserInteractor {
                     print(error)
                 case .success(let response):
                     me.process(images: response.data)
-                    me.view?.reload()
                 }
             }
         }
     }
     
+    private func fetchImage(for viewModel: ImageViewModel) {
+        imagesFetcher.fetch(image: viewModel.gifImage) { result in
+            guard case let .success(data) = result else { return }
+            viewModel.imageData = data
+        }
+    }
+    
     private func process(images: [GifImage]) {
+        let startingIndex = self.images.count
+        var indexPaths: [IndexPath] = []
+        var imageViewModels: [ImageViewModel] = []
+        
         /// Sometimes Giphy doesn't return some preview urls.
         /// So let's filter those images.
-        self.images.append(contentsOf: images.filter { $0.images.previewGif.url != nil })
+        imageViewModels = images.filter{ $0.images.previewGif.url != nil }.map { ImageViewModel(gifImage: $0)}
+        
+        for imageVM in imageViewModels {
+            fetchImage(for: imageVM)
+        }
+                
+        self.images.append(contentsOf: imageViewModels)
+        
+        for i in startingIndex..<self.images.count {
+            indexPaths.append(IndexPath(row: i, section: 0))
+        }
+        
+        view?.insertItems(at: indexPaths)
     }
 }
