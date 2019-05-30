@@ -34,7 +34,7 @@ class BrowserImageCell : UICollectionViewCell {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.rightAnchor.constraint(equalTo: rightAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

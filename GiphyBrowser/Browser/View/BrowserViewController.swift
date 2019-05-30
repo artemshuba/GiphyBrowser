@@ -7,17 +7,19 @@
 
 import UIKit
 
-private let itemSize = CGSize(width: 44, height: 44)
 private let maxItemsInRow = 4
 
 protocol BrowserView : class {
     func reload()
+    func showActivity(isLoading: Bool)
+    func showActivity(isLoadingMore: Bool)
 }
 
 class BrowserViewController : UIViewController {
     private lazy var imagesCollectionViewLayout = UICollectionViewFlowLayout()
     private lazy var imagesCollectionView = UICollectionView(frame: .zero,
                                                              collectionViewLayout: imagesCollectionViewLayout)
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .gray)
     
     private let interactor: BrowserInteractor
 
@@ -25,9 +27,6 @@ class BrowserViewController : UIViewController {
         self.interactor = interactor
         
         super.init(nibName: nil, bundle: nil)
-        
-        setupLayout()
-        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,6 +35,9 @@ class BrowserViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupLayout()
+        setupViews()
         
         interactor.start()
     }
@@ -46,25 +48,41 @@ class BrowserViewController : UIViewController {
     
     private func setupLayout() {
         view.addSubview(imagesCollectionView)
+        view.addSubview(activityIndicator)
         
         imagesCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imagesCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            imagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            imagesCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            imagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
     private func setupViews() {
-        title = "Browser"
+        title = "Trending"
         view.backgroundColor = .white
+        
+        activityIndicator.hidesWhenStopped = true
         
         imagesCollectionViewLayout.minimumInteritemSpacing = 1
         imagesCollectionViewLayout.minimumLineSpacing = 1
         updateCollectionItemSize()
         
-        imagesCollectionView.register(BrowserImageCell.self, forCellWithReuseIdentifier: BrowserImageCell.reuseIdentifier)
+        imagesCollectionView.register(BrowserImageCell.self,
+                                      forCellWithReuseIdentifier: BrowserImageCell.reuseIdentifier)
+        imagesCollectionView.register(PhotosCollectionFooterView.self,
+                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                      withReuseIdentifier: PhotosCollectionFooterView.reuseIdentifier)
+        
         imagesCollectionView.backgroundColor = .white
         imagesCollectionView.dataSource = self
         imagesCollectionView.delegate = self
@@ -102,10 +120,46 @@ extension BrowserViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         interactor.didTapOnImage(at: indexPath)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        guard let photosCollectionFooterView = view as? PhotosCollectionFooterView else { return }
+        
+        interactor.fetchMore()
+        
+        photosCollectionFooterView.isLoading = interactor.isFetchingMore
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        guard let photosCollectionFooterView = view as? PhotosCollectionFooterView else { return }
+        
+        photosCollectionFooterView.isLoading = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotosCollectionFooterView.reuseIdentifier, for: indexPath)
+    }
+}
+
+extension BrowserViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        guard interactor.canFetchMore else { return CGSize.zero }
+        
+        return CGSize(width: collectionView.frame.width, height: 40)
+    }
 }
 
 extension BrowserViewController : BrowserView {
     func reload() {
         imagesCollectionView.reloadData()
+    }
+    
+    func showActivity(isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
+    
+    func showActivity(isLoadingMore: Bool) {
+        guard let footerView = imagesCollectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionFooter).first as? PhotosCollectionFooterView else { return }
+        
+        footerView.isLoading = isLoadingMore
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 private let apiBase = "https://api.giphy.com/v1/gifs"
-private let apiKey = "vq8aNGnBmV6i6ey95bRZxS0CWrkYbtq2"
+private let apiKey = "fK9biMnsaY9XF3E85pON4wm21oFEIXIJ"
 
 class GiphyImagesFetcher : ImagesFetcher {
     private let httpService: HttpService
@@ -18,7 +18,6 @@ class GiphyImagesFetcher : ImagesFetcher {
     }
     
     func fetch(limit: Int, offset: Int, complete: @escaping (Result<ImagesResponse, Error>) -> Void) {
-        //https://api.giphy.com/v1/gifs/trending?api_key=vq8aNGnBmV6i6ey95bRZxS0CWrkYbtq2&limit=25&rating=G
         let parameters = [
             "limit": "\(limit)",
             "offset": "\(offset)",

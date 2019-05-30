@@ -11,7 +11,8 @@
 		E8A22C39229FD8C700F376C7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E8A22C38229FD8C700F376C7 /* Cartfile */; };
 		E8A22C3C229FD95600F376C7 /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */; };
 		E8A22C3E229FD95800F376C7 /* SwiftyGif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E8B56A63229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A62229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift */; };
+		E8A22C44229FDE1A00F376C7 /* PhotosCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */; };
+		E8A22C46229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */; };
 		E8B56A68229FD2F400E1908D /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */; };
 		E8B56A6B229FD35F00E1908D /* ImageDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */; };
 		E8B56A6E229FD3A900E1908D /* BrowserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */; };
@@ -68,7 +69,8 @@
 		E8A22C36229FD5D300F376C7 /* ImageDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsInteractor.swift; sourceTree = "<group>"; };
 		E8A22C38229FD8C700F376C7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
-		E8B56A62229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
+		E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionFooterView.swift; sourceTree = "<group>"; };
+		E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsBuilder.swift; sourceTree = "<group>"; };
 		E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserRouter.swift; sourceTree = "<group>"; };
@@ -119,10 +121,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E8A22C42229FDE0400F376C7 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				E8A22C43229FDE1A00F376C7 /* PhotosCollectionFooterView.swift */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
 		E8B56A61229FCAE800E1908D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E8B56A62229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift */,
+				E8A22C45229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				E8EAF989229FCA8700532A11 /* Cells */,
+				E8A22C42229FDE0400F376C7 /* Footer */,
 				E8F52EFE229FB35F0082423C /* BrowserViewController.swift */,
 			);
 			path = View;
@@ -410,7 +421,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8B56A68229FD2F400E1908D /* ImageDetailsViewController.swift in Sources */,
-				E8B56A63229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift in Sources */,
 				E8F52EDF229FB3090082423C /* AppDelegate.swift in Sources */,
 				E8F52F04229FB4340082423C /* GiphyImagesFetcher.swift in Sources */,
 				E8B56A6B229FD35F00E1908D /* ImageDetailsBuilder.swift in Sources */,
@@ -420,11 +430,13 @@
 				E8F52F1D229FC26A0082423C /* BrowserBuilder.swift in Sources */,
 				E8B56A6E229FD3A900E1908D /* BrowserRouter.swift in Sources */,
 				E8F52F06229FB45D0082423C /* ImagesFetcher.swift in Sources */,
+				E8A22C44229FDE1A00F376C7 /* PhotosCollectionFooterView.swift in Sources */,
 				E8A22C37229FD5D300F376C7 /* ImageDetailsInteractor.swift in Sources */,
 				E8F52F15229FBA070082423C /* HttpService.swift in Sources */,
 				E8F52F13229FB9FE0082423C /* HttpRequest.swift in Sources */,
 				E8F52EFF229FB35F0082423C /* BrowserViewController.swift in Sources */,
 				E8F52F09229FB4C20082423C /* GifImage.swift in Sources */,
+				E8A22C46229FDE4100F376C7 /* UICollectionReusableView+reuseIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

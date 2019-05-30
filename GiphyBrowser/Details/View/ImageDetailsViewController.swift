@@ -33,7 +33,7 @@ class ImageDetailsViewController : UIViewController {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
-            imageView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
