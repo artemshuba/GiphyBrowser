@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E8A22C37229FD5D300F376C7 /* ImageDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C36229FD5D300F376C7 /* ImageDetailsInteractor.swift */; };
+		E8A22C39229FD8C700F376C7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E8A22C38229FD8C700F376C7 /* Cartfile */; };
+		E8A22C3C229FD95600F376C7 /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */; };
+		E8A22C3E229FD95800F376C7 /* SwiftyGif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8B56A63229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A62229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift */; };
 		E8B56A68229FD2F400E1908D /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */; };
 		E8B56A6B229FD35F00E1908D /* ImageDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */; };
@@ -38,8 +41,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E8A22C3F229FD95900F376C7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8A22C3E229FD95800F376C7 /* SwiftyGif.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8A22C40229FD96500F376C7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E8A22C36229FD5D300F376C7 /* ImageDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsInteractor.swift; sourceTree = "<group>"; };
+		E8A22C38229FD8C700F376C7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
 		E8B56A62229FCAFF00E1908D /* UICollectionViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsBuilder.swift; sourceTree = "<group>"; };
@@ -69,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A22C3C229FD95600F376C7 /* SwiftyGif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E8A22C3A229FD94500F376C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8A22C3B229FD95600F376C7 /* SwiftyGif.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E8B56A61229FCAE800E1908D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +170,10 @@
 		E8F52ED2229FB3090082423C = {
 			isa = PBXGroup;
 			children = (
+				E8A22C38229FD8C700F376C7 /* Cartfile */,
 				E8F52EDD229FB3090082423C /* GiphyBrowser */,
 				E8F52EF2229FB30A0082423C /* GiphyBrowserTests */,
+				E8A22C3A229FD94500F376C7 /* Frameworks */,
 				E8F52EDC229FB3090082423C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -257,6 +296,9 @@
 				E8F52ED7229FB3090082423C /* Sources */,
 				E8F52ED8229FB3090082423C /* Frameworks */,
 				E8F52ED9229FB3090082423C /* Resources */,
+				E8A22C3F229FD95900F376C7 /* Embed Frameworks */,
+				E8A22C40229FD96500F376C7 /* CopyFiles */,
+				E8A22C41229FD97700F376C7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -327,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A22C39229FD8C700F376C7 /* Cartfile in Resources */,
 				E8F52EE9229FB30A0082423C /* LaunchScreen.storyboard in Resources */,
 				E8F52EE6229FB30A0082423C /* Assets.xcassets in Resources */,
 			);
@@ -340,6 +383,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E8A22C41229FD97700F376C7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E8F52ED7229FB3090082423C /* Sources */ = {
@@ -516,6 +579,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GiphyBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,6 +600,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GiphyBrowser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -15,6 +15,7 @@ struct GifImage : Decodable {
 }
 
 struct GifImages : Decodable {
+    let original: GifData
     let previewGif: GifData
 }
 

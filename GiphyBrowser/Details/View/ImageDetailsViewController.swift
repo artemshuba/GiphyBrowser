@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyGif
 
 class ImageDetailsViewController : UIViewController {
     private lazy var imageView = UIImageView()
@@ -44,11 +45,10 @@ class ImageDetailsViewController : UIViewController {
         
         imageView.contentMode = .scaleAspectFit
         
-        if let previewUrl = interactor.image.images.previewGif.url,
-            let url = URL(string: previewUrl),
-            let data = try? Data(contentsOf: url) {
-            //TODO load from cache
-            imageView.image = UIImage(data: data)
+        if
+            let previewUrl = interactor.image.images.original.url,
+            let url = URL(string: previewUrl) {
+            imageView.setGifFromURL(url)
         }
     }
 }
