@@ -17,11 +17,11 @@ class MockBrowserView : BrowserView {
         onItemsInserted?(indexPaths)
     }
     
-    func showActivity(isLoading: Bool) {
+    func updateActivity(isLoading: Bool) {
         onShowIsLoadingActivity?(isLoading)
     }
     
-    func showActivity(isLoadingMore: Bool) {
+    func updateActivity(isLoadingMore: Bool) {
         onShowIsLoadingMoreActivity?(isLoadingMore)
     }
 }

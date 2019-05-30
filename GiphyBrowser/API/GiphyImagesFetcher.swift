@@ -7,8 +7,14 @@
 
 import Foundation
 
+// TODO should be moved to Configuration class
 private let apiBase = "https://api.giphy.com/v1/gifs"
 private let apiKey = "uC3CE53LNmWT6Z4x9sBZPIpdhoPgEyGw"
+
+enum ImageFetchType {
+    case preview
+    case original
+}
 
 class GiphyImagesFetcher : ImagesFetcher {
     private let httpService: HttpService
@@ -33,8 +39,17 @@ class GiphyImagesFetcher : ImagesFetcher {
         }
     }
     
-    func fetch(image: GifImage, complete: @escaping (Result<Data, Error>) -> Void) {
-        guard let url = image.images.previewGif.url else { return }
+    func fetch(image: GifImage, type: ImageFetchType, complete: @escaping (Result<Data, Error>) -> Void) {
+        var imageUrl: String?
+        
+        switch type {
+        case .original:
+            imageUrl = image.images.original.url
+        case .preview:
+            imageUrl = image.images.previewGif.url
+        }
+        
+        guard let url = imageUrl else { return }
         
         if let cachedData = cache.object(forKey: NSString(string: url)) {
             complete(.success(Data(referencing: cachedData)))

@@ -20,10 +20,10 @@ class BrowserInteractorTests: XCTestCase {
             mockImages.append(GifImage(
                 type: "gif",
                 id: "\(i)",
-                url: "https://giphy.com/gifs/snl-saturday-night-live-season-44-giuaF7FQqGIP0fBSwA",
+                url: "",
                 images: GifImages(
-                    original: GifData(url: "https://giphy.com/gifs/snl-saturday-night-live-season-44-giuaF7FQqGIP0fBSwA"),
-                    previewGif: GifData(url: "https://media2.giphy.com/media/giuaF7FQqGIP0fBSwA/giphy_s.gif"))))
+                    original: GifData(url: ""),
+                    previewGif: GifData(url: ""))))
         }
 
         

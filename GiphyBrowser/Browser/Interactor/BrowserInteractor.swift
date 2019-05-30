@@ -18,13 +18,13 @@ class BrowserInteractor {
     
     private(set) var isFetching = false {
         didSet {
-            view?.showActivity(isLoading: isFetching && !isFetchingMore)
+            view?.updateActivity(isLoading: isFetching && !isFetchingMore)
         }
     }
     
     private(set) var isFetchingMore = false {
         didSet {
-            view?.showActivity(isLoadingMore: isFetchingMore)
+            view?.updateActivity(isLoadingMore: isFetchingMore)
         }
     }
     
@@ -82,7 +82,7 @@ class BrowserInteractor {
     }
     
     private func fetchImage(for viewModel: ImageViewModel) {
-        imagesFetcher.fetch(image: viewModel.gifImage) { result in
+        imagesFetcher.fetch(image: viewModel.gifImage, type: .preview) { result in
             guard case let .success(data) = result else { return }
             viewModel.imageData = data
         }

@@ -9,8 +9,10 @@ import UIKit
 
 class ImageDetailsBuilder {
     static func build(with image: ImageViewModel) -> ImageDetailsViewController {
-        let interactor = ImageDetailsInteractor(image: image)
+        let fetcher = GiphyImagesFetcher(httpService: .default)
+        let interactor = ImageDetailsInteractor(image: image, imagesFetcher: fetcher)
         let viewController = ImageDetailsViewController(interactor: interactor)
+        interactor.view = viewController
         
         return viewController
     }

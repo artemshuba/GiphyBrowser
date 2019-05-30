@@ -24,7 +24,7 @@ class MockImagesFetcher : ImagesFetcher {
         }
     }
     
-    func fetch(image: GifImage, complete: @escaping (Result<Data, Error>) -> Void) {
+    func fetch(image: GifImage, type: ImageFetchType, complete: @escaping (Result<Data, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             sleep(1)
 

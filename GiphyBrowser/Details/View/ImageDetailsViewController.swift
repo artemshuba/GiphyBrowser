@@ -8,8 +8,14 @@
 import UIKit
 import SwiftyGif
 
+protocol ImageDetailsView : class {
+    func updateActivity(isLoading: Bool)
+    func showImage(with data: Data)
+}
+
 class ImageDetailsViewController : UIViewController {
     private lazy var imageView = UIImageView()
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .gray)
     
     private let interactor: ImageDetailsInteractor
     
@@ -17,17 +23,24 @@ class ImageDetailsViewController : UIViewController {
         self.interactor = interactor
         
         super.init(nibName: nil, bundle: nil)
-        
-        setupLayout()
-        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupLayout()
+        setupViews()
+        
+        interactor.fetch()
+    }
+    
     private func setupLayout() {
         view.addSubview(imageView)
+        view.addSubview(activityIndicator)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -35,6 +48,14 @@ class ImageDetailsViewController : UIViewController {
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -45,10 +66,17 @@ class ImageDetailsViewController : UIViewController {
         
         imageView.contentMode = .scaleAspectFit
         
-        if
-            let previewUrl = interactor.image.gifImage.images.original.url,
-            let url = URL(string: previewUrl) {
-            imageView.setGifFromURL(url)
-        }
+        activityIndicator.hidesWhenStopped = true
+    }
+}
+
+extension ImageDetailsViewController : ImageDetailsView {
+    func updateActivity(isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
+    
+    func showImage(with data: Data) {
+        guard let image = try? UIImage(gifData: data) else { return }
+        imageView.setGifImage(image)
     }
 }

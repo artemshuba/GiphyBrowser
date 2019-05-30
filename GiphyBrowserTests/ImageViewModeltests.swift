@@ -40,7 +40,7 @@ class ImageViewModelTests: XCTestCase {
         expectation = self.expectation(description: "Image data should not be nil and onUpdate should be called")
         
         //When
-        imageFetcher.fetch(image: image, complete: fetchHandler)
+        imageFetcher.fetch(image: image, type: .original, complete: fetchHandler)
         
         //Then
         waitForExpectations(timeout: 2, handler: nil)

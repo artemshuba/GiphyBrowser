@@ -18,6 +18,8 @@
 		E8A22C4E22A00CFC00F376C7 /* MockImagesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4D22A00CFC00F376C7 /* MockImagesFetcher.swift */; };
 		E8A22C5022A0129300F376C7 /* MockBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C4F22A0129300F376C7 /* MockBrowserView.swift */; };
 		E8A22C5222A01A8300F376C7 /* ImageViewModeltests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C5122A01A8300F376C7 /* ImageViewModeltests.swift */; };
+		E8A22C5422A020C400F376C7 /* ImageDetailsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C5322A020C400F376C7 /* ImageDetailsInteractorTests.swift */; };
+		E8A22C5622A020EB00F376C7 /* MockImageDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A22C5522A020EB00F376C7 /* MockImageDetailsView.swift */; };
 		E8B56A68229FD2F400E1908D /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */; };
 		E8B56A6B229FD35F00E1908D /* ImageDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */; };
 		E8B56A6E229FD3A900E1908D /* BrowserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */; };
@@ -80,6 +82,8 @@
 		E8A22C4D22A00CFC00F376C7 /* MockImagesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImagesFetcher.swift; sourceTree = "<group>"; };
 		E8A22C4F22A0129300F376C7 /* MockBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBrowserView.swift; sourceTree = "<group>"; };
 		E8A22C5122A01A8300F376C7 /* ImageViewModeltests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModeltests.swift; sourceTree = "<group>"; };
+		E8A22C5322A020C400F376C7 /* ImageDetailsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsInteractorTests.swift; sourceTree = "<group>"; };
+		E8A22C5522A020EB00F376C7 /* MockImageDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageDetailsView.swift; sourceTree = "<group>"; };
 		E8B56A67229FD2F400E1908D /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		E8B56A6A229FD35F00E1908D /* ImageDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsBuilder.swift; sourceTree = "<group>"; };
 		E8B56A6D229FD3A900E1908D /* BrowserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserRouter.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			children = (
 				E8A22C4D22A00CFC00F376C7 /* MockImagesFetcher.swift */,
 				E8A22C4F22A0129300F376C7 /* MockBrowserView.swift */,
+				E8A22C5522A020EB00F376C7 /* MockImageDetailsView.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			children = (
 				E8A22C4C22A00CEF00F376C7 /* Mocks */,
 				E8A22C4A22A00C8300F376C7 /* BrowserInteractorTests.swift */,
+				E8A22C5322A020C400F376C7 /* ImageDetailsInteractorTests.swift */,
 				E8A22C5122A01A8300F376C7 /* ImageViewModeltests.swift */,
 				E8F52EF5229FB30A0082423C /* Info.plist */,
 			);
@@ -474,7 +480,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A22C5022A0129300F376C7 /* MockBrowserView.swift in Sources */,
+				E8A22C5422A020C400F376C7 /* ImageDetailsInteractorTests.swift in Sources */,
 				E8A22C4E22A00CFC00F376C7 /* MockImagesFetcher.swift in Sources */,
+				E8A22C5622A020EB00F376C7 /* MockImageDetailsView.swift in Sources */,
 				E8A22C5222A01A8300F376C7 /* ImageViewModeltests.swift in Sources */,
 				E8A22C4B22A00C8300F376C7 /* BrowserInteractorTests.swift in Sources */,
 			);
@@ -623,6 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8FUBVVN7HH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -644,6 +653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8FUBVVN7HH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

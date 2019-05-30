@@ -11,8 +11,8 @@ private let maxItemsInRow = 4
 
 protocol BrowserView : class {
     func insertItems(at indexPaths: [IndexPath])
-    func showActivity(isLoading: Bool)
-    func showActivity(isLoadingMore: Bool)
+    func updateActivity(isLoading: Bool)
+    func updateActivity(isLoadingMore: Bool)
 }
 
 class BrowserViewController : UIViewController {
@@ -149,11 +149,11 @@ extension BrowserViewController : BrowserView {
         imagesCollectionView.insertItems(at: indexPaths)
     }
     
-    func showActivity(isLoading: Bool) {
+    func updateActivity(isLoading: Bool) {
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
-    func showActivity(isLoadingMore: Bool) {
+    func updateActivity(isLoadingMore: Bool) {
         guard let footerView = imagesCollectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionFooter).first as? PhotosCollectionFooterView else { return }
         
         footerView.isLoading = isLoadingMore
