@@ -7,15 +7,20 @@
 
 import Foundation
 
+/// Represents HTTP request.
 struct HttpRequest {
     private let request: URLRequest
     
+    /// Initializes HttpRequest with provided URLRequest.
     init(request: URLRequest) {
         self.request = request
     }
     
-    func responseData(response: @escaping (Result<Data?, Error>) -> (Void)) {
-        perform(request, complete: response)
+    /// Performs a request and returns response as Data.
+    ///
+    /// - Parameter complete: A closure to handle a response.
+    func responseData(complete: @escaping (Result<Data?, Error>) -> (Void)) {
+        perform(request, complete: complete)
     }
     
     private func perform(_ request: URLRequest, complete: @escaping (Result<Data?, Error>) -> ()) {

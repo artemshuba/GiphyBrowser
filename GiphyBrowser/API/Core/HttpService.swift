@@ -7,9 +7,15 @@
 
 import Foundation
 
+/// A service to perform HTTP requests.
 class HttpService {
+    /// Provides a default instance of HttpService.
     static let `default` = HttpService()
     
+    /// Creates and returns a GET HttpRequest with given url and parameters.
+    ///
+    /// - Parameter url: An url string.
+    /// - Parameter parameters: A dictionary with query parameters.
     func request(url: String, parameters: [String : String]) -> HttpRequest {
         guard var urlComponents = URLComponents(string: url) else {
             /// Should never happen.

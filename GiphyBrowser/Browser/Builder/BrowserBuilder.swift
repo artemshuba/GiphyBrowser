@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Provides method for building BrowserViewController.
 class BrowserBuilder {
+    /// Builds a BrowserViewController with all dependencies.
     static func build() -> BrowserViewController {
         let fetcher = GiphyImagesFetcher(httpService: .default)
         let interactor = BrowserInteractor(imagesFetcher: fetcher)

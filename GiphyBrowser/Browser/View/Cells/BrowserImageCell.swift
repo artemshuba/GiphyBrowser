@@ -12,8 +12,12 @@ class BrowserImageCell : UICollectionViewCell {
     
     var imageViewModel: ImageViewModel? {
         didSet {
+            /// Show the actual data if it's already fetched.
             update(imageData: imageViewModel?.imageData)
-            imageViewModel?.onUpdate = update
+            /// Subscribe for image data updates.
+            imageViewModel?.onUpdate = { [weak self] data in
+                self?.update(imageData: data)
+            }
         }
     }
     
