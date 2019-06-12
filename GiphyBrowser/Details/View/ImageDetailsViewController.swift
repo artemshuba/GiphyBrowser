@@ -14,10 +14,14 @@ protocol ImageDetailsView : class {
 }
 
 class ImageDetailsViewController : UIViewController {
+    // MARK: - Properties: private
+    
     private lazy var imageView = UIImageView()
     private lazy var activityIndicator = UIActivityIndicatorView(style: .gray)
     
     private let interactor: ImageDetailsInteractor
+    
+    // MARK: - Init
     
     init(interactor: ImageDetailsInteractor) {
         self.interactor = interactor
@@ -29,6 +33,8 @@ class ImageDetailsViewController : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +43,8 @@ class ImageDetailsViewController : UIViewController {
         
         interactor.fetch()
     }
+    
+    // MARK: - Private
     
     private func setupLayout() {
         view.addSubview(imageView)
@@ -69,6 +77,8 @@ class ImageDetailsViewController : UIViewController {
         activityIndicator.hidesWhenStopped = true
     }
 }
+
+// MARK: - ImageDetailsView
 
 extension ImageDetailsViewController : ImageDetailsView {
     func updateActivity(isLoading: Bool) {

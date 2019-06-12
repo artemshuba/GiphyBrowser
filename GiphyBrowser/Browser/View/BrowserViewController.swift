@@ -16,6 +16,8 @@ protocol BrowserView : class {
 }
 
 class BrowserViewController : UIViewController {
+    // MARK: - Properties: private
+    
     private lazy var imagesCollectionViewLayout = UICollectionViewFlowLayout()
     private lazy var imagesCollectionView = UICollectionView(frame: .zero,
                                                              collectionViewLayout: imagesCollectionViewLayout)
@@ -23,6 +25,8 @@ class BrowserViewController : UIViewController {
     
     private let interactor: BrowserInteractor
 
+    // MARK: - Init
+    
     init(interactor: BrowserInteractor) {
         self.interactor = interactor
         
@@ -32,6 +36,8 @@ class BrowserViewController : UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +51,8 @@ class BrowserViewController : UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
+    
+    // MARK: - Private
     
     private func setupLayout() {
         view.addSubview(imagesCollectionView)
@@ -94,6 +102,8 @@ class BrowserViewController : UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension BrowserViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return interactor.numberOfImages()
@@ -111,6 +121,8 @@ extension BrowserViewController : UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension BrowserViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -136,6 +148,8 @@ extension BrowserViewController : UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension BrowserViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         guard interactor.canFetchMore else { return CGSize.zero }
@@ -143,6 +157,8 @@ extension BrowserViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width, height: 40)
     }
 }
+
+// MARK: - BrowserView
 
 extension BrowserViewController : BrowserView {
     func insertItems(at indexPaths: [IndexPath]) {

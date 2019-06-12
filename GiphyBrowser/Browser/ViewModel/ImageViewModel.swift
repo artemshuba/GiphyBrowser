@@ -23,6 +23,9 @@ class ImageViewModel {
     /// Notifies the view that image data has been updated and should be displayed.
     var onUpdate: ((Data?) -> ())?
     
+    /// Initializes view model with given image.
+    ///
+    /// - Parameter gifImage: A gif image.
     init(gifImage: GifImage) {
         self.gifImage = gifImage
     }

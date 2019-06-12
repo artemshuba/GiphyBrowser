@@ -7,9 +7,16 @@
 
 import UIKit
 
+/// Represents a footer view for photos collection.
+/// Contains activity indicator to indicate if we are fetching more photos.
 class PhotosCollectionFooterView : UICollectionReusableView {
+    // MARK: - Properties: private
+    
     private lazy var activityIndicator = UIActivityIndicatorView(style: .gray)
     
+    // MARK: - Properties: public
+    
+    /// Indicates if we are loading more data.
     var isLoading: Bool {
         get {
             return activityIndicator.isAnimating
@@ -18,6 +25,8 @@ class PhotosCollectionFooterView : UICollectionReusableView {
             newValue ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
         }
     }
+    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +38,8 @@ class PhotosCollectionFooterView : UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private
     
     private func setupLayout() {
         addSubview(activityIndicator)

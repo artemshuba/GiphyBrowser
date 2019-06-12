@@ -8,7 +8,10 @@
 import Foundation
 
 class ImageDetailsInteractor {
+    // MARK: - Properties: private
     private let imagesFetcher: ImagesFetcher
+    
+    // MARK: - Properties: public
     
     let image: ImageViewModel
     weak var view: ImageDetailsView?
@@ -19,10 +22,14 @@ class ImageDetailsInteractor {
         }
     }
     
+    // MARK: - Init
+    
     init(image: ImageViewModel, imagesFetcher: ImagesFetcher) {
         self.image = image
         self.imagesFetcher = imagesFetcher
     }
+    
+    // MARK: - Public
     
     func fetch() {
         isFetching = true

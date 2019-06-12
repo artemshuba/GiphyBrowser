@@ -10,6 +10,7 @@ import Foundation
 private let imagesPerPage = 25
 
 class BrowserInteractor {
+    // MARK: - Properties: private
     private let imagesFetcher: ImagesFetcher
     private var images: [ImageViewModel] = []
     
@@ -28,13 +29,19 @@ class BrowserInteractor {
         }
     }
     
+    // MARK: - Properties: public
+    
     var canFetchMore: Bool {
         return images.count > 0 && !isFetching
     }
     
+    // MARK: - Init
+    
     init(imagesFetcher: ImagesFetcher) {
         self.imagesFetcher = imagesFetcher
     }
+    
+    // MARK: - Public
     
     func fetch() {
         fetchImages(initialFetch: true)
@@ -56,6 +63,8 @@ class BrowserInteractor {
         let image = self.image(at: indexPath)
         router?.routeToDetails(of: image)
     }
+    
+    // MARK: - Private
     
     private func fetchImages(initialFetch: Bool) {
         guard !isFetching else { return }
